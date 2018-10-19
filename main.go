@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/kataras/iris"
@@ -21,23 +22,23 @@ func main() {
 }
 
 func serveLaunches(ctx iris.Context) {
-	ctx.Write([]byte("Hello"))
-	fetchLaunches()
+	ctx.JSON(fetchLaunches())
 }
 
-func fetchLaunches() {
+func fetchLaunches() Launches {
 	resp, err := http.Get("https://launchlibrary.net/1.4/launch/next/10")
 	if err != nil {
 		fmt.Println("Failed to get launch data")
 	}
 
-	decoder := json.NewDecoder(resp.Body)
-	launches := [10]Launch{}
+	body, err := ioutil.ReadAll(resp.Body)
+	launches := Launches{}
 
-	err = decoder.Decode(&launches)
+	err = json.Unmarshal(body, &launches)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println(launches)
+	fmt.Printf("%+v", launches)
+	return launches
 }
