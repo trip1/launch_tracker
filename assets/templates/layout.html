@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>Rockets</title>
+    
+    </head>
+    <style>
+      body {
+        background-color: #e9ebee;
+      }
+
+      .launch_container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 8px;
+      }
+
+      .launch_header {
+        width: 100%;
+        opacity: .5;
+        z-index: 2;
+        color: #ffffff;
+        text-align: center;
+        background-color: darkslategrey;
+      }
+
+      .launch_img {
+        object-fit: cover;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .card {
+        /* Add shadows to create the "card" effect */
+        width: 20%;
+        height: 33%;
+        margin: 8px;
+        display: flex;
+        transition: 0.3s;
+        border-radius: 6px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+
+      /* On mouse-over, add a deeper shadow */
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+
+      /* Add some padding inside the card container */
+      .container {
+        padding: 2px 16px;
+      }
+    </style>
+    <body>
+      <!-- Render the current template here -->
+      {{ yield }}
+    </body>
+  </html>

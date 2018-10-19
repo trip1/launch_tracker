@@ -9,7 +9,7 @@ package main
 type Launch struct {
 	ID     int    `json:"id"`
 	Name   string `json:"name"`
-	Start  string `json:"isostart"`
+	Start  string `json:"windowstart"`
 	Rocket Rocket `json:"rocket"`
 }
 
