@@ -27,13 +27,12 @@ func serveLaunches(ctx iris.Context) {
 func fetchLaunches() Launches {
 	// Fetch data
 	resp, err := http.Get("https://launchlibrary.net/1.4/launch/next/10")
-
-	// Close the body when finished
-	defer resp.Body.Close()
-
 	if err != nil {
 		fmt.Println("Failed to get launch data")
 	}
+
+	// Close the body when finished
+	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
 	launches := Launches{}
