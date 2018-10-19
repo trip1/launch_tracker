@@ -5,16 +5,46 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 
 	"github.com/kataras/iris"
 )
 
 func main() {
 	app := iris.Default()
-	app.Get("/", serveLaunches)
+
+	// set the view engine target to ./templates folder
+	app.RegisterView(iris.HTML("./assets/templates", ".html").Reload(true))
+
+	// Test serve html templates
+	app.Get("/", serveHTML)
+
+	// Serve the launch data
+	app.Get("/test", serveLaunches)
 
 	// listen and serve on http://0.0.0.0:8080.
 	app.Run(iris.Addr(":8080"))
+}
+
+func serveHTML(ctx iris.Context) {
+	launches := fetchLaunches()
+	ctx.ViewLayout("layout.html")
+
+	for k, v := range launches.Data {
+		index := strconv.Itoa(k)
+		key := "Launch" + index
+		ctx.ViewData(key, v.Name)
+
+		key = "Img" + index
+		ctx.ViewData(key, v.Rocket.Image)
+
+		key = "Date" + index
+		ctx.ViewData(key, v.Start)
+	}
+
+	if err := ctx.View("index.html"); err != nil {
+		ctx.Application().Logger().Infof(err.Error())
+	}
 }
 
 // Serve launch data as json
