@@ -12,21 +12,22 @@ import (
 func main() {
 	app := iris.Default()
 	app.Get("/", serveLaunches)
-	app.Get("/ping", func(ctx iris.Context) {
-		ctx.JSON(iris.Map{
-			"message": "pong",
-		})
-	})
+
 	// listen and serve on http://0.0.0.0:8080.
 	app.Run(iris.Addr(":8080"))
 }
 
+// Serve launch data as json
 func serveLaunches(ctx iris.Context) {
 	ctx.JSON(fetchLaunches())
 }
 
+// Fetches next 10 launch
+// from launchlibrary
 func fetchLaunches() Launches {
 	resp, err := http.Get("https://launchlibrary.net/1.4/launch/next/10")
+	defer resp.Body.Close()
+
 	if err != nil {
 		fmt.Println("Failed to get launch data")
 	}
