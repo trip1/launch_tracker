@@ -25,7 +25,10 @@ func serveLaunches(ctx iris.Context) {
 // Fetches next 10 launch
 // from launchlibrary
 func fetchLaunches() Launches {
+	// Fetch data
 	resp, err := http.Get("https://launchlibrary.net/1.4/launch/next/10")
+
+	// Close the body when finished
 	defer resp.Body.Close()
 
 	if err != nil {
@@ -35,11 +38,12 @@ func fetchLaunches() Launches {
 	body, err := ioutil.ReadAll(resp.Body)
 	launches := Launches{}
 
+	// Read resp into array
 	err = json.Unmarshal(body, &launches)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Printf("%+v", launches)
+	//fmt.Printf("%+v", launches)
 	return launches
 }
