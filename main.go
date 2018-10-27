@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strconv"
 
 	"github.com/kataras/iris"
 )
@@ -29,18 +28,21 @@ func main() {
 func serveHTML(ctx iris.Context) {
 	launches := fetchLaunches()
 	ctx.ViewLayout("layout.html")
+	fmt.Printf("%+v", launches.Data)
+	ctx.ViewData("Launches", launches.Data)
+	/*
+		for k, v := range launches.Data {
+			index := strconv.Itoa(k)
+			key := "Launch" + index
+			ctx.ViewData(key, v.Name)
 
-	for k, v := range launches.Data {
-		index := strconv.Itoa(k)
-		key := "Launch" + index
-		ctx.ViewData(key, v.Name)
+			key = "Img" + index
+			ctx.ViewData(key, v.Rocket.Image)
 
-		key = "Img" + index
-		ctx.ViewData(key, v.Rocket.Image)
-
-		key = "Date" + index
-		ctx.ViewData(key, v.Start)
-	}
+			key = "Date" + index
+			ctx.ViewData(key, v.Start)
+		}
+	*/
 
 	if err := ctx.View("index.html"); err != nil {
 		ctx.Application().Logger().Infof(err.Error())
