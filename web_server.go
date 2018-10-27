@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/fatih/color"
 	"github.com/kataras/iris"
 )
 
@@ -18,15 +19,19 @@ type Server struct {
 	UpdatedAt  time.Time   `json:"updated_at"`
 	Update     chan bool   `json:"update"`
 	StopUpdate chan bool   `json:"stop"`
+	Bot        Bot         `json:"bot"`
 }
 
 func (s *Server) init() {
+	color.Yellow("Init: data")
 	s.fetchLaunches()
+
+	s.Bot = newBot()
 
 	s.Update = make(chan bool)
 	s.StopUpdate = make(chan bool)
 
-	fmt.Println("Init complete")
+	color.Green("Init complete")
 	go s.interval()
 }
 
@@ -54,7 +59,6 @@ func (s *Server) interval() {
 	for {
 		select {
 		case <-s.Update:
-			fmt.Println("Update")
 			s.fetchLaunches()
 			s.UpdatedAt = time.Now()
 		case <-ticker.C:
