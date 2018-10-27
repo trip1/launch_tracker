@@ -1,5 +1,9 @@
 package main
 
+import (
+	"time"
+)
+
 // Data types used when fetching
 // info from launchlibrary.net
 //
@@ -16,7 +20,8 @@ type Launch struct {
 // Launches array for loading
 // response from launchlibrary
 type Launches struct {
-	Data []Launch `json:"launches"`
+	Data      []Launch `json:"launches"`
+	UpdatedAt time.Time
 }
 
 // Rocket data type
