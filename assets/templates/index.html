@@ -1,101 +1,13 @@
 <div class="launch_container">
+  {{range .Launches}}
   <div class="card">
     <div class="launch_header">
-      <h3>{{.Launch0}} </h3>
-      <p>{{.Date0}}</p>
+      <h3>{{.Name}} </h3>
+      <p>{{.Start}}</p>
     </div>
     <div>
-      <img class='launch_img' src={{.Img0}}>
+      <img class='launch_img' src={{.Rocket.Image}}>
     </div>
   </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch1}} </h3>
-      <p>{{.Date1}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img1}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch2}} </h3>
-      <p>{{.Date2}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img2}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch3}} </h3>
-      <p>{{.Date3}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img3}}>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch4}} </h3>
-      <p>{{.Date4}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img4}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch5}} </h3>
-      <p>{{.Date5}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img5}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch6}} </h3>
-      <p>{{.Date6}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img6}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch7}} </h3>
-      <p>{{.Date7}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img7}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch8}} </h3>
-      <p>{{.Date8}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img8}}>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Launch9}} </h3>
-      <p>{{.Date9}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Img9}}>
-    </div>
-  </div>
+  {{end}}
 </div>
