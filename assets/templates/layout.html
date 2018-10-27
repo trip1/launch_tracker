@@ -11,6 +11,42 @@
         background-color: #e9ebee;
       }
 
+      @media (min-width: 520px) {
+        .card {
+          /* Add shadows to create the "card" effect */
+          width: 30%;
+          margin: 6px;
+          display: flex;
+          transition: 0.3s;
+          border-radius: 6px;
+          align-items: center;
+          flex-direction: column;
+          justify-content: flex-start;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+      }
+
+      @media (max-width: 519px) {
+        .card {
+          /* Add shadows to create the "card" effect */
+          width: 90%;
+          margin: 6px;
+          display: flex;
+          transition: 0.3s;
+          border-radius: 6px;
+          align-items: center;
+          flex-direction: column;
+          justify-content: flex-start;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+      }
+      
+
+      /* On mouse-over, add a deeper shadow */
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+
       .launch_container {
         display: flex;
         flex-wrap: wrap;
@@ -35,25 +71,6 @@
         object-fit: cover;
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
-      }
-
-
-      .card {
-        /* Add shadows to create the "card" effect */
-        width: 100%;
-        margin: 6px;
-        display: flex;
-        transition: 0.3s;
-        border-radius: 6px;
-        align-items: center;
-        flex-direction: column;
-        justify-content: flex-start;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      }
-
-      /* On mouse-over, add a deeper shadow */
-      .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
       }
 
       /* Add some padding inside the card container */
