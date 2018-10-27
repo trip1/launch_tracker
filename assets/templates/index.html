@@ -1,12 +1,14 @@
 <div class="launch_container">
   {{range .Launches}}
-  <div class="card">
-    <div class="launch_header">
-      <h3>{{.Name}} </h3>
-      <p>{{.Start}}</p>
-    </div>
-    <div>
-      <img class='launch_img' src={{.Rocket.Image}}>
+  <div class='card_container'>
+    <div class="card">
+      <div class="launch_header">
+        <h3>{{.Rocket.Name}} </h3>
+        <p>{{.Start}}</p>
+      </div>
+      <div class="img_container">
+        <img class='launch_img' src={{.Rocket.Image}}>
+      </div>
     </div>
   </div>
   {{end}}
