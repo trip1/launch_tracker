@@ -19,6 +19,8 @@ func main() {
 	// Serve the launch data
 	app.Get("/json", server.homeJSON)
 
+	app.Get("/update", server.update)
+
 	// listen and serve on http://0.0.0.0:8080.
 	app.Run(iris.Addr(":8080"))
 }
